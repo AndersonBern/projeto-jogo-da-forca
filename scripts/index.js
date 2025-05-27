@@ -7,7 +7,7 @@ let input = document.getElementById('chute');
 let btnVerificar = document.getElementById('botao');
 
 //Lista de palavras.
-let lista = ['pai', 'mamae', 'vovo', 'vo'];
+let lista = ['papagaio', 'cachorro', 'gato', 'tatu', 'cobra', 'bode', 'iguana', 'peixe', 'urubu', 'gamba', 'sapo', 'galinha'];
 
 //Para sortear uma palavra dentro do array.
 let palavra = lista[Math.floor(Math.random() * lista.length)];
@@ -127,3 +127,8 @@ function resultado() {
     }
 }
 
+input.addEventListener('keyup', function(event) {
+    if (event.key == 'Enter') {
+        verificar();
+    }
+})
