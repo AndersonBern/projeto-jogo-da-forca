@@ -38,7 +38,7 @@ let letrasCertas = [];
 
 function verificar() {
     //Adicionando o valor do input a variavel letra.
-    letra = String(input.value);
+    letra = String(input.value).toLowerCase();
 
     //Verificando se é vazio, nulo, indefinido ou numero.
     if (letra == '' || letra == null || letra == undefined || parseInt(letra) >= 0) {
