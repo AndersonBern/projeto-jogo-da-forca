@@ -4,6 +4,8 @@ let mostraPalavra = document.getElementById('palavra');
 let mostraLetra = document.getElementById('letra');
 let input = document.getElementById('chute');
 
+let btnVerificar = document.getElementById('botao');
+
 //Lista de palavras.
 let lista = ['pai', 'mamae', 'vovo', 'vo'];
 
@@ -22,45 +24,89 @@ for (let cont = 0; arrayPalavra.length > cont; cont++) {
     mostraPalavra.innerHTML += arrayTracos[cont];
 }
 
+//Contador de erros.
 let erros = 0;
 
 function mudaImagem() {
     imagem.style.backgroundImage = `url(imagens/nivel-${erros}.png)`;
-    console.log(erros);
 }
 
-function verificar() {
-    let letra = String(input.value);
+//Variáveis para validação dos caracteres.
+let letra = '';
+let letrasErradas = [];
+let letrasCertas = [];
 
+function verificar() {
+    //Adicionando o valor do input a variavel letra.
+    letra = String(input.value);
+
+    //Verificando se é vazio, nulo, indefinido ou numero.
+    if (letra == '' || letra == null || letra == undefined || parseInt(letra) >= 0) {
+        window.alert('Digite um valor válido!');
+    }
+
+    //Verificando se a letra já foi testada.
+    else if(letrasErradas.indexOf(letra) >= 0 || letrasCertas.indexOf(letra) >= 0) {
+        window.alert('Essa já foi! Tente outra letra.'); 
+    }
+    else {
+        //Chama a função para iniciar jogo.
+        jogo();
+    }
+
+    input.value = ''
+    input.focus();
+    
+}
+
+function jogo () {
+    //Laço para percorrer as letras da palavra.
     for (let indice in arrayPalavra) {
         if (arrayPalavra[indice] == letra) {
 
-            arrayTracos[indice] = letra;
-            console.log(arrayTracos);
+        //Adicionando as letras certas ao array de verificação e ao array de output.
+        arrayTracos[indice] = letra;
+        letrasCertas.push(letra);
+        }
 
-        }
-        else {
-           
-        }
-        
+        //Mostrando as letras corretas.
         mostraPalavra.innerHTML = arrayTracos.join(' ');
-        console.log(arrayTracos[indice]);
     }
 
+    //Se a letra não existe na palavra...
     if (arrayPalavra.indexOf(letra) == -1){
+        //Incremento ao erro.
         erros += 1;
+
+        //Adicionando a letra ao array de letras erradas
+        letrasErradas.push(letra);
+
         mudaImagem();
 
         mensagem.innerHTML = `Tentativa ${erros}`;
 
         mostraLetra.innerHTML += ' ' + letra;
 
-        if (erros >= 7) {
-            mensagem.innerHTML = `Você PERDEU!`;
-            return;
-        }
-            
     }
-    
+
+    if (erros >= 7) {
+        mensagem.innerHTML = 'Você PERDEU!'
+
+        input.disabled = true;
+
+        btnVerificar.disabled = true;
+
+        reiniciar.style.display = 'block'
+    }
+
+    if (letrasCertas.length == arrayPalavra.length) {
+        mensagem.innerHTML = 'Parabéns, você GANHOU! '
+
+        input.disabled = true;
+
+        btnVerificar.disabled = true;
+
+        reiniciar.style.display = 'block'
+    }
 }
 

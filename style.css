@@ -21,6 +21,20 @@ main {
     background-image: url(imagens/nivel-0.png);
     background-size: cover;
     margin: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgb(158, 252, 171);
+}
+
+#reiniciar {
+    background-color: green;
+    width: 40%;
+    height: 50px;
+
+    transition: display 2s;
 }
 
 #palavra {
