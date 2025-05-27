@@ -14,6 +14,10 @@ main {
     height: 80vh;
 }
 
+#tentativa {
+    font-weight: bold;
+}
+
 #imagem {
     width: 400px;
     height: 400px;
