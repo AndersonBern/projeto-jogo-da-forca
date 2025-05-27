@@ -83,7 +83,9 @@ function jogo () {
 
         mudaImagem();
 
-        mensagem.innerHTML = `Tentativa ${erros}`;
+        mostraLetra.style.display = 'block';
+
+        mensagem.innerHTML = `Tentativas restantes: ${7 - erros}`;
 
         mostraLetra.innerHTML += ' ' + letra;
     }
