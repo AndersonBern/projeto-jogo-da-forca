@@ -24,17 +24,16 @@ main {
 
     display: flex;
     justify-content: center;
-    align-items: center;
-
-    background-color: rgb(158, 252, 171);
+    align-items: end;
 }
 
 #reiniciar {
+    display: none;
     background-color: green;
     width: 40%;
     height: 50px;
 
-    transition: display 2s;
+    transition: block 2s;
 }
 
 #palavra {

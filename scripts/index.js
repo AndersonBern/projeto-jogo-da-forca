@@ -86,27 +86,44 @@ function jogo () {
         mensagem.innerHTML = `Tentativa ${erros}`;
 
         mostraLetra.innerHTML += ' ' + letra;
-
     }
+    //Chama a função resultado.
+    let chamadaResultado = setTimeout(resultado, 1000);
+   
+}
 
+function resultado() {
+    //Se tiver 7 erros...
     if (erros >= 7) {
         mensagem.innerHTML = 'Você PERDEU!'
 
+        //Bloqueia o input.
         input.disabled = true;
 
+        //Bloquia o botão verificar.
         btnVerificar.disabled = true;
 
+        //Mostra o botão de reiniciar.
         reiniciar.style.display = 'block'
-    }
 
+        //Muda a cor de fundo.
+        imagem.style.backgroundColor = '#fc8e8e';
+    }
+    //Se o tamanho do array das letras certas for igual ao tamanho do array da palavra...
     if (letrasCertas.length == arrayPalavra.length) {
         mensagem.innerHTML = 'Parabéns, você GANHOU! '
-
+        
+        //Bloqueia o input.
         input.disabled = true;
 
+        //Bloqueia o botão verificar.
         btnVerificar.disabled = true;
 
-        reiniciar.style.display = 'block'
+        //Mostra o botão de reiniciar.
+        reiniciar.style.display = 'block';
+
+        //Muda a cor de fundo.
+        imagem.style.backgroundColor = '#9efcab';
     }
 }
 
